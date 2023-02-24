@@ -16,7 +16,7 @@ const IndexPage = () => {
         
 
           <h1 className='title'>
-            Welcome to{' '}
+            Welcome to our site{' '}
             <code className='title_code'>Cloud Coffee</code>
           </h1>
       
@@ -38,6 +38,7 @@ const IndexPage = () => {
                 <StaticImage src="../images/ACG_Orange_Logo_Horizontal.png" alt="A Cloud Guru logo" width={119} height={16} />
               </span>
             </a>
+            release 0.001
           </footer>
       </main>
 
