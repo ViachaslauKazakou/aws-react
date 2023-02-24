@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      BUCKET_NAME: react-nonproduction-bucket-09071970
+      BUCKET_NAME: frontend-react-production-09041970
     steps:
       - name: Check out code
         uses: actions/checkout@v2
