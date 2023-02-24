@@ -1,0 +1,72 @@
+name: Deploy feature branches to production bucket
+
+on:
+  push:
+    branches:
+      - release/*
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    env:
+      BUCKET_NAME: react-nonproduction-bucket-09071970
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: configure aws cli
+        uses: actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: set up node js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: build site
+        run: |
+          npm ci
+          npm run build
+      - name: deploy files to bucket
+        run: aws s3 cp public s3://${{ env.BUCKET_NAME }} --recursive --acl public-read
+      - name: Zip bundle
+        run: |
+          cd src
+          zip -r ../${{ github.sha }}.zip .
+      - name: Archive artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: zipped-bundle
+          path: ${{ github.sha }}.zip
+
+
+  publish:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    needs: build
+    steps:
+      - name: Create release
+        id: create-release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.github_token }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{ github.run_number }}
+          release_name: Release ${{ github.run_number }}
+          body: New release for ${{ github.sha }}. Release notes can be found in the docs.
+          draft: false
+          prerelease: false
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: zipped-bundle
+      - name: Upload release asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.github_token }}
+        with:
+          upload_url: ${{ steps.create-release.outputs.upload_url }}
+          asset_path: ./${{ github.sha }}.zip
+          asset_name: source_code_with_libraries.zip
+          asset_content_type: application/zip
