@@ -4,9 +4,9 @@ import Button from 'react-bootstrap/Button';
 import Stack from 'react-bootstrap/Stack';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Header(props) {
+function Content(props) {
     return(
-        <header className="App-header">
+        <header className="App-heade">
           <h1>Welcome to learn Easy!</h1>
 {/*             <img src={logo} className="App-logo" alt="logo" /> */}
             <p>
@@ -35,4 +35,4 @@ function Header(props) {
     );
 }
 
-export default Header;
+export default Content;

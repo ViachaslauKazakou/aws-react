@@ -38,7 +38,7 @@ function TopNavbar() {
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#link3">Log in</Nav.Link>
+            <Nav.Link href="/log-in">Log in</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

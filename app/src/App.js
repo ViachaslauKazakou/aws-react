@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header'
+import Content from './components/Content'
 import TopNavbar from './components/Navbar'
+import Footer from './components/Footer'
 
 function App() {
     const test="Welcome to Learn"
@@ -9,7 +10,8 @@ function App() {
   return (
     <div className="App">
         <TopNavbar />
-        <Header test={test} test1={test1}/>
+        <Content test={test} test1={test1}/>
+        <Footer />
     </div>
   );
 }
