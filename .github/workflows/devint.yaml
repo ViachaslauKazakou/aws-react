@@ -27,6 +27,7 @@ jobs:
       - name: build site
         run: |
           cd app
+          # npm install react-bootstrap bootstrap
           npm ci
           npm run build
       - name: deploy files to bucket
