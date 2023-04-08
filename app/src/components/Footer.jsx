@@ -7,7 +7,7 @@ function Footer(props) {
         <footer className="App-header">
             <div>
                 <p>
-                  About!
+                  About us!
                 </p>
             </div>
 
