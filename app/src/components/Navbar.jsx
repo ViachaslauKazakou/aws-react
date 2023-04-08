@@ -1,3 +1,4 @@
+import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -37,6 +38,7 @@ function TopNavbar() {
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link href="#link3">Log in</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
