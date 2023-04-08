@@ -6,11 +6,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Content(props) {
     return(
-        <header className="App-heade">
+        <header className="App-header">
           <h1>Welcome to learn Easy!</h1>
 {/*             <img src={logo} className="App-logo" alt="logo" /> */}
             <p>
-              Find you mentor!
+              Find you mentor and courses!
             </p>
             <a
               className="App-link"
@@ -21,7 +21,7 @@ function Content(props) {
               Learn Easy
             </a>
             <a href="https://7p3nq27bvg.execute-api.us-east-1.amazonaws.com/beta/base">Press me</a>
-            <a href="https://7p3nq27bvg.execute-api.us-east-1.amazonaws.com/beta/getList"> List of tasks </a>
+            <a href="https://vi49v6hf11.execute-api.us-east-1.amazonaws.com/beta/learn/mentee/"> List of tasks </a>
             <div>{props.test}</div>
             <Stack direction="horizontal" gap={2}>
               <Button as="a" variant="primary">
